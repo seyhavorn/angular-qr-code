@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content img {
+  height: 30rem;
+  width: 30rem;
+}
+
+:host ::ng-deep img {
+  width: 600px;
+  height: 600px;
+}
