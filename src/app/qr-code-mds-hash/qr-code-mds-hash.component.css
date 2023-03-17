@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.qr-content img {
+  border: 5px solid #000000;
+  margin-bottom: 1rem;
+}
