@@ -132,4 +132,46 @@ export class QrCodeMdsHashComponent implements OnInit {
       }
     );
   }
+
+//   import JSZip from 'jszip';
+// import QRCode from 'qrcode';
+
+// function generateQRCode(date) {
+//   return new Promise((resolve, reject) => {
+//     QRCode.toDataURL(date, { scale: 4, width: 400, margin: 1 }, (err, url) => {
+//       if (err) {
+//         reject(err);
+//       } else {
+//         resolve(url);
+//       }
+//     });
+//   });
+// }
+
+// async function generateQRCodeZipFile(dates) {
+//   const zip = new JSZip();
+
+//   for (const date of dates) {
+//     try {
+//       const url = await generateQRCode(date);
+//       zip.file(`${date}.png`, url.split(',')[1], { base64: true });
+//     } catch (err) {
+//       console.error(`Failed to generate QR code for ${date}: ${err}`);
+//     }
+//   }
+
+//   const content = await zip.generateAsync({ type: 'blob' });
+//   const url = window.URL.createObjectURL(content);
+//   const link = document.createElement('a');
+//   link.href = url;
+//   link.download = 'qr_codes.zip';
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+//   window.URL.revokeObjectURL(url);
+// }
+
+// const dates = ['2022-01-01', '2022-01-02', '2022-01-03'];
+// generateQRCodeZipFile(dates);
+
 }
