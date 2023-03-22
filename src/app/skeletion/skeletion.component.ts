@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-skeletion',
@@ -7,12 +7,8 @@ import { Component } from '@angular/core';
 })
 export class SkeletionComponent {
 
-  isLoading: boolean = true;
+  constructor() {}
 
-  constructor() {
-    // setTimeout(() => {
-    //   this.isLoading = false;
-    // }, 3000);
+  openWebcam() {
   }
-
 }
