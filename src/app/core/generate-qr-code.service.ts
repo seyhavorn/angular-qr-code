@@ -6,10 +6,10 @@ import * as QRCodeGenerator from 'qrcode-generator';
 })
 export class GenerateQrCodeService {
 
-  generateQRCode(text: string): string {
-    const qr = QRCodeGenerator(0, 'L');
-    qr.addData(text);
-    qr.make();
-    return qr.createDataURL();
-  }
+  // generateQRCode(text: string): string {
+    // const qr = QRCodeGenerator(0, 'L');
+    // qr.addData(text);
+    // qr.make();
+    // return qr.createDataURL();
+  // }
 }

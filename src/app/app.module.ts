@@ -8,18 +8,22 @@ import { GenerateQrCodeService } from './core/generate-qr-code.service';
 import { DatePipe } from '@angular/common';
 import { QrCodeMdsHashComponent } from './qr-code-mds-hash/qr-code-mds-hash.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WebcamModule } from 'ngx-webcam';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SkeletionComponent,
     GenerateQrCodeComponent,
-    QrCodeMdsHashComponent
+    QrCodeMdsHashComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    WebcamModule
   ],
   providers: [
     GenerateQrCodeService,

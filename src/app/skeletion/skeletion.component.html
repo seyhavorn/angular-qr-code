@@ -1,1 +1,44 @@
-<button (click)="openWebcam()">Capture from Webcam</button>
+<!-- <div class="content-camera">
+  <div>
+    <video #videoElement></video>
+  </div>
+  
+  <img [src]="photoUrl" *ngIf="photoUrl" />
+
+  <div *ngIf="photoUrl" class="float-right mt-3">
+    <span class="btn btn-sm btn-danger mr-3">Cancel</span>
+    <span (click)="capturePhoto()" class="btn btn-sm btn-primary">Capture</span>
+  </div> -->
+
+  <!-- Capture -->
+  <!-- <button class="btn btn-sm btn-primary float-right mt-3" id="button-capture">{{ 'BRANCH.TAKE' | translate }}</button> -->
+
+  <!-- Download -->
+  <!-- <div id="download" class="float-right mt-3"> -->
+    <!-- Download -->
+    <!-- <span id="download" class="btn btn-sm btn-primary">{{ 'BRANCH.DOWNLOAD' | translate }}</span> -->
+  <!-- </div> -->
+
+  <!-- <canvas id="canv-asdf"></canvas> -->
+
+  <!-- <button (click)="passDataToImg()">Capture Image</button>
+  <img [src]="photoUrl" *ngIf="photoUrl">
+  <button (click)="passDataToForm()">Pass Data to Form</button> -->
+<!-- </div> -->
+
+
+<div>
+  <button (click)="checkPermissions()">Check the webcam permissions</button>
+  <p *ngIf="status">Status here: {{status}}</p>
+</div>
+<div *ngIf="stream">
+   <!-- web cam image will be shown here -->
+   <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [imageQuality]="1"></webcam>
+   <button (click)="captureImage()" >{{btnLabel}}</button>
+</div>
+
+<!-- Preview section -->
+<div *ngIf="previewImage">
+  <img [src]="previewImage" height="250" width="250">
+  <button (click)="proceed()">Proceed</button>
+</div>

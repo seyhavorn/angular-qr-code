@@ -16,6 +16,6 @@ export class GenerateQrCodeComponent implements OnInit {
 
   ngOnInit(): void {
     const value = 'https://www.youtube.com/';
-    this.qrCodeDataURL = this.generateQrCodeService.generateQRCode(value);
+    // this.qrCodeDataURL = this.generateQrCodeService.generateQRCode(value);
   }
 }
