@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { QrCodeMdsHashComponent } from './qr-code-mds-hash/qr-code-mds-hash.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WebcamModule } from 'ngx-webcam';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { TestComponent } from './test/test.component';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TestComponent } from './test/test.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    WebcamModule
+    WebcamModule,
+    ImageCropperModule
   ],
   providers: [
     GenerateQrCodeService,

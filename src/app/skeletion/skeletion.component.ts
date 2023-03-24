@@ -1,7 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { WebcamImage, WebcamInitError } from 'ngx-webcam';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
+import { ImageCroppedEvent, CropperPosition } from 'ngx-image-cropper';
 import { Observable, Subject } from 'rxjs';
+
 
 @Component({
   selector: 'app-skeletion',
@@ -9,10 +10,19 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./skeletion.component.css']
 })
 export class SkeletionComponent {
-  // @ViewChild('videoElement', { static: true }) videoElement: ElementRef;
-  // public photoUrl: SafeUrl = null;
+  // public webcamImage: WebcamImage;
+  public showWebcam = true;
+  public showCropper = false;
+  // public cropperPosition: CropperPosition;
+  // public cropperWidth: number;
+  // public cropperHeight: number;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  
+
+  constructor(
+    private webcamImage: WebcamImage,
+    public cropperPosition: CropperPosition
+  ) {}
 
   // public capturePhoto(): void {
   //   const constraints: MediaStreamConstraints = {
@@ -58,11 +68,30 @@ export class SkeletionComponent {
     return this.trigger.asObservable();
   }
 
-  snapshot(event: WebcamImage) {
-    console.log(event);
-    this.previewImage = event.imageAsDataUrl;
-    this.btnLabel = 'Re capture image'
+  public handleImageCapture(image: WebcamImage): void {
+    this.showWebcam = false;
+    this.showCropper = true;
+    this.webcamImage = image;
+    // this.croppedImage = this.webcamImage.imageAsDataUrl;
   }
+  
+
+  public handleImageCropped(event: ImageCroppedEvent): void {
+    this.showCropper = false;
+    this.showWebcam = true;
+    this.webcamImage = {
+      imageAsDataUrl: event.base64,
+      width: event.width,
+      height: event.height
+    };
+  }
+
+  
+  // snapshot(event: WebcamImage) {
+  //   console.log(event);
+  //   this.previewImage = event.imageAsDataUrl;
+  //   this.btnLabel = 'Re capture image'
+  // }
 
   checkPermissions() {
     navigator.mediaDevices.getUserMedia({
@@ -85,9 +114,9 @@ export class SkeletionComponent {
     })
   }
 
-  captureImage() {
-    this.trigger.next();
-  }
+  // captureImage() {
+  //   this.trigger.next();
+  // }
 
   proceed() {
     console.log(this.previewImage);

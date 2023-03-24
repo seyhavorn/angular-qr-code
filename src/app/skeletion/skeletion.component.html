@@ -27,18 +27,31 @@
 <!-- </div> -->
 
 
-<div>
-  <button (click)="checkPermissions()">Check the webcam permissions</button>
-  <p *ngIf="status">Status here: {{status}}</p>
-</div>
-<div *ngIf="stream">
-   <!-- web cam image will be shown here -->
-   <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [imageQuality]="1"></webcam>
-   <button (click)="captureImage()" >{{btnLabel}}</button>
+<!-- <div *ngIf="showWebcam">
+  <webcam
+    [height]="500"
+    [width]="500"
+    (imageCapture)="handleImageCapture($event)"
+    [trigger]="$trigger">
+  </webcam>
 </div>
 
-<!-- Preview section -->
-<div *ngIf="previewImage">
-  <img [src]="previewImage" height="250" width="250">
-  <button (click)="proceed()">Proceed</button>
-</div>
+<div *ngIf="showCropper">
+  <image-cropper
+    [imageChangedEvent]="croppedImage"
+    [cropperPosition]="cropperPosition"
+    [cropperWidth]="cropperWidth"
+    [cropperHeight]="cropperHeight"
+    [aspectRatio]="1"
+    [maintainAspectRatio]="true"
+    [resizeToWidth]="500"
+    [roundCropper]="false"
+    [hideResizeSquares]="true"
+    [canvasRotation]="0"
+    format="png"
+    (imageCropped)="handleImageCropped($event)"
+    (cropperPositionChange)="cropperPosition = $event"
+    (cropperWidthChange)="cropperWidth = $event"
+    (cropperHeightChange)="cropperHeight = $event">
+  </image-cropper>
+</div> -->
