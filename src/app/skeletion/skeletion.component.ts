@@ -21,7 +21,6 @@ export class SkeletionComponent {
 
   constructor(
     private webcamImage: WebcamImage,
-    public cropperPosition: CropperPosition
   ) {}
 
   // public capturePhoto(): void {
@@ -76,15 +75,14 @@ export class SkeletionComponent {
   }
   
 
-  public handleImageCropped(event: ImageCroppedEvent): void {
-    this.showCropper = false;
-    this.showWebcam = true;
-    this.webcamImage = {
-      imageAsDataUrl: event.base64,
-      width: event.width,
-      height: event.height
-    };
-  }
+  // public handleImageCropped(event: ImageCroppedEvent): void {
+  //   this.showCropper = false;
+  //   this.showWebcam = true;
+  //   this.webcamImage = {
+  //     width: event.width,
+  //     height: event.height
+  //   };
+  // }
 
   
   // snapshot(event: WebcamImage) {

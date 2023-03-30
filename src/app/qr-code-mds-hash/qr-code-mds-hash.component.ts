@@ -13,7 +13,7 @@ export class QrCodeMdsHashComponent implements OnInit {
   formGroup: any;
   today: Date = new Date();
   dataToday: any;
-  code: string = 'TGCXBRQ5';
+  code: string = 'seyhavorn';
   qrCodeDataUrl: string = '';
   data: any;
   day: any;
@@ -31,23 +31,15 @@ export class QrCodeMdsHashComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    const qrValue = `${this.dataToday}` + '-' + `${this.code}`;
-    const hash = CryptoJS.MD5(qrValue).toString();
-    console.log('qrValue', qrValue);
-    this.data = hash;
-    this.generateQRCodeWithMD5(hash);
-
-    // this.generateQRCode(hash, this.image);
+    this.generateQRCodeWithMD5(this.dataToday);
   }
 
   onSubmit() {
     if (this.formGroup.valid) {
-      const dataPick = this.formGroup.value;
-      const qrValue = `${dataPick.date}` + '-' + `${this.code}`;
-      this.day = this.datePipe.transform(dataPick.date, 'dd');
-      console.log('this day', this.day);
+      const dataPick = this.formGroup.value.date;
+      console.log(dataPick);
       
-      console.log(qrValue);
+      this.generateQRCodeWithMD5(dataPick);
     }
   }
 
@@ -73,7 +65,7 @@ export class QrCodeMdsHashComponent implements OnInit {
         this.qrCodeDataUrl = url;
       }
     });
-  }
+}
 
   generateQRCode(data: string, imageUrl: string): void {
     const canvas = document.createElement('canvas');
@@ -119,7 +111,6 @@ export class QrCodeMdsHashComponent implements OnInit {
 
           // Convert the combined canvas to a data URL and display it
           const dataUrl = canvas.toDataURL();
-          console.log('canvas.toDataURL', dataUrl);
 
           const combinedImage = document.createElement('img');
           combinedImage.src = dataUrl;
